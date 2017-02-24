@@ -5,8 +5,9 @@
     "license": "MIT",
     "homepage": "https://github.com/noldors/commerceelements",
     "keywords": [
-        "misc",
+        "cart",
         "array",
+        "collection",
         "php"
     ],
     "authors": [
