@@ -21,7 +21,7 @@ class SessionResolverTest extends TestCase
     protected function setUp()
     {
         $_SESSION['cart'][12] = ['quantity' => 11, 'price' => 900];
-        $this->collection = Factory::create(Factory::SESSION, 'cart');
+        $this->collection = (new Factory)->create(SessionResolver::class, 'cart');
     }
 
     public function testGetCollectionFromSession()

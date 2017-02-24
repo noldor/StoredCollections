@@ -15,7 +15,7 @@ final class FactoryTest extends TestCase
 {
     public function testCanCreateCollectionFromSession()
     {
-        $this->assertInstanceOf(SessionResolver::class, (new Factory)->create(Factory::SESSION, 'cart'));
+        $this->assertInstanceOf(SessionResolver::class, (new Factory)->create(SessionResolver::class, 'cart'));
     }
 
     /**
@@ -23,12 +23,12 @@ final class FactoryTest extends TestCase
      */
     public function testCanCreateCollectionFromCookies()
     {
-        $this->assertInstanceOf(CookiesResolver::class, (new Factory)->create(Factory::COOKIES, 'cart'));
+        $this->assertInstanceOf(CookiesResolver::class, (new Factory)->create(CookiesResolver::class, 'cart'));
     }
 
     public function testUnsupportedResolverType()
     {
         $this->expectException(UnsupportedStorageException::class);
-        (new Factory)->create(Noldors\CommerceElements\Tests\Helper:class, 'cart');
+        (new Factory)->create(UnsupportedStorage::class, 'cart');
     }
 }
