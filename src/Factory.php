@@ -7,12 +7,6 @@ use Noldors\CommerceElements\Interfaces\ElementsResolverInterface;
 
 class Factory
 {
-    /**
-     * Factory constructor.
-     */
-    private function __construct()
-    {
-    }
 
     /**
      * @param string $resolver Resolver class name
@@ -20,7 +14,7 @@ class Factory
      * @return ElementsResolverInterface
      * @throws UnsupportedStorageException
      */
-    public static function create(string $resolver, string $type): ElementsResolverInterface
+    public function create(string $resolver, string $type): ElementsResolverInterface
     {
         $dataResolver = new $resolver($type);
 

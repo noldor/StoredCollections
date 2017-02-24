@@ -7,7 +7,7 @@ Commerce Collections provide a clean way to save save collections of products, s
 ```PHP
 use Noldors\CommerceElements\Factory;
 
-$cart = Factory::create(Factory::SESSION, 'cart');
+$cart = (new Factory)->create(Factory::SESSION, 'cart');
 
 $cart->add(12, ['quantity' => 11, 'price' => 900]);
 $cart->update(12, ['quantity' => 3, 'price' => 600]);
