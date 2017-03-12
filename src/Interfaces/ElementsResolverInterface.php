@@ -5,6 +5,10 @@ namespace Noldors\CommerceElements\Interfaces;
 
 use Illuminate\Support\Collection;
 
+/**
+ * Interface ElementsResolverInterface
+ * @package Noldors\CommerceElements\Interfaces
+ */
 interface ElementsResolverInterface
 {
     /**

@@ -8,17 +8,20 @@ use Noldors\CommerceElements\Exceptions\CookiesAutoSaveException;
 use Noldors\CommerceElements\Exceptions\CookieSaveException;
 
 /**
- * There are some restrictions. Cookie can't be bigger, than 4kb, and you can't have more, than 20 cookies for domain, use this resolver at your own risk/
+ * There are some restrictions. Cookie can't be bigger, than 4kb, and you can't have more, than 20
+ * cookies for domain, use this resolver at your own risk/
  */
 class CookiesResolver extends Resolver
 {
     /**
      * CookieResolver constructor.
+     *
      * @param string $type
      */
     public function __construct(string $type)
     {
-        $this->items = new Collection(isset($_COOKIE[$type]) ? json_decode($_COOKIE[$type], true) : []);
+        $this->items = new Collection(isset($_COOKIE[$type]) ? json_decode($_COOKIE[$type],
+            true) : []);
         $this->type = $type;
     }
 

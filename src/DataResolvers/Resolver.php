@@ -6,6 +6,10 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
 use Noldors\CommerceElements\Interfaces\ElementsResolverInterface;
 
+/**
+ * Class Resolver
+ * @package Noldors\CommerceElements\DataResolvers
+ */
 abstract class Resolver implements ElementsResolverInterface
 {
     /**

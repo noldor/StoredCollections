@@ -4,10 +4,15 @@ namespace Noldors\CommerceElements\DataResolvers;
 
 use Illuminate\Support\Collection;
 
+/**
+ * Class SessionResolver
+ * @package Noldors\CommerceElements\DataResolvers
+ */
 class SessionResolver extends Resolver
 {
     /**
      * SessionResolver constructor.
+     *
      * @param string $type
      */
     public function __construct(string $type)
