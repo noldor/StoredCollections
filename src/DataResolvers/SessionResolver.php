@@ -2,7 +2,7 @@
 
 namespace Noldors\CommerceElements\DataResolvers;
 
-use Illuminate\Support\Collection;
+use Noldors\Helpers\Collection;
 
 /**
  * Class SessionResolver

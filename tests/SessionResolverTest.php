@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace Noldors\CommerceElements\Tests;
 
 
-use Illuminate\Support\Collection;
+use Noldors\Helpers\Collection;
 use Noldors\CommerceElements\DataResolvers\SessionResolver;
 use Noldors\CommerceElements\Factory;
 use PHPUnit\Framework\TestCase;
@@ -14,14 +14,20 @@ use PHPUnit\Framework\TestCase;
 class SessionResolverTest extends TestCase
 {
     /**
-     * @var SessionResolver
+     * @var Collection
      */
     protected $collection;
+
+    /**
+     * @var SessionResolver
+     */
+    protected $sessionCart;
 
     protected function setUp()
     {
         $_SESSION['cart'][12] = ['quantity' => 11, 'price' => 900];
-        $this->collection = (new Factory)->create(SessionResolver::class, 'cart');
+        $this->sessionCart = (new Factory)->create(SessionResolver::class, 'cart');
+        $this->collection = $this->sessionCart->collection();
     }
 
     public function testGetCollectionFromSession()
@@ -47,7 +53,7 @@ class SessionResolverTest extends TestCase
     {
         $this->assertEquals(
             [],
-            $this->collection->delete(12)->toArray()
+            $this->collection->remove(12)->toArray()
         );
     }
 
@@ -55,13 +61,13 @@ class SessionResolverTest extends TestCase
     {
         $this->assertEquals(
             [12 => ['quantity' => 3, 'price' => 300]],
-            $this->collection->update(12, ['quantity' => 3, 'price' => 300])->toArray()
+            $this->collection->add(12, ['quantity' => 3, 'price' => 300])->toArray()
         );
     }
 
     public function testReturnCollection()
     {
-        $this->assertInstanceOf(Collection::class, $this->collection->collection());
+        $this->assertInstanceOf(Collection::class, $this->collection);
     }
 
     public function testReturnArray()
@@ -87,13 +93,14 @@ class SessionResolverTest extends TestCase
     {
         $this->assertEquals(
             21,
-            $this->collection->add(17, ['quantity' => 10])->getTotal(['quantity'])
+            $this->collection->add(17, ['quantity' => 10])->summary(['quantity'])
         );
     }
 
     public function testAutoSaveCollectionToSession()
     {
-        $this->collection->add(15, ['quantity' => 15, 'price' => 100])->__destruct();
+        $this->collection->add(15, ['quantity' => 15, 'price' => 100]);
+        $this->sessionCart->__destruct();
 
         $this->assertEquals(
             [

@@ -3,7 +3,7 @@
 namespace Noldors\CommerceElements\Tests;
 
 
-use Illuminate\Contracts\Support\Arrayable;
+use Noldors\Contracts\Arrayable;
 
 class Helper implements Arrayable
 {
@@ -14,8 +14,18 @@ class Helper implements Arrayable
         $this->data = $data;
     }
 
-    public function toArray()
+    public function toArray():array
     {
         return ['data' => $this->data];
+    }
+
+    public function jsonSerialize():array
+    {
+        return $this->toArray();
+    }
+
+    public function getIterator()
+    {
+        return new \ArrayIterator($this->data);
     }
 }

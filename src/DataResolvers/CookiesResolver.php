@@ -3,7 +3,7 @@
 namespace Noldors\CommerceElements\DataResolvers;
 
 
-use Illuminate\Support\Collection;
+use Noldors\Helpers\Collection;
 use Noldors\CommerceElements\Exceptions\CookiesAutoSaveException;
 use Noldors\CommerceElements\Exceptions\CookieSaveException;
 

@@ -25,13 +25,13 @@ class CookieResolverTest extends TestCase
     /**
      * TODO: need to test cookies resolver/
      */
-    public function testGetCollectionFromCookies()
+    /*public function testGetCollectionFromCookies()
     {
-        /*$this->collection = (new Factory)->create(CookiesResolver::class, 'cart');
+        $this->collection = (new Factory)->create(CookiesResolver::class, 'cart');
 
         $this->assertEquals(
             [12 => ['quantity' => 11, 'price' => 900]],
             $this->collection->toArray()
-        );*/
-    }
+        );
+    }*/
 }
